@@ -1,7 +1,7 @@
 from myro import *
 
-MAX_SIDE = 1050
-MAX_CORNER = 850
+MAX_SIDE = 950
+MAX_CORNER = 600
 
 def obs():
     if  check(1) > MAX_SIDE:
