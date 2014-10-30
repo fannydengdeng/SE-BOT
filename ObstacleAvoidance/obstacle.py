@@ -1,7 +1,7 @@
 from myro import *
 
 MAX_SIDE = 1050
-MAX_CORNER = 850
+MAX_CORNER = 800
 
 def obs():
     if  check(1) > MAX_SIDE:
@@ -24,41 +24,33 @@ def obs_corner():
 def check(side):
     sumLeft = 0
     count = 0
-    while count != 12:
+    while count != 5:
         sumLeft += getObstacle(side)
         count += 1
     return sumLeft/count
 
 def turn_right():
     stop()
-    #motors(1,-1)
-    #wait(0.797)
     rotate(-1)
-    wait(0.84)
+    wait(0.807)
     stop()
 
 def turn_left():
     stop()
-    #motors(-1,1)
-    #wait(0.797)
     rotate(1)
-    wait(0.84)
+    wait(0.799)
     stop()
 
 def turn_corner_right():
     stop()
-    #motors(1,-1)
-    #wait(0.2657)
     rotate(-1)
-    wait(0.27)
+    wait(0.266)
     stop()
 
 def turn_corner_left():
     stop()
-    #motors(-1,1)
-    #wait(0.267)
     rotate(1)
-    wait(0.27)
+    wait(0.265)
     stop()
 
 def move():
@@ -70,7 +62,7 @@ init("com3")
 stage = 0
 counter = 0
 while not obs():
-    forward(1)
+    move()
 stop()
 stage = 1
 while stage == 1:
