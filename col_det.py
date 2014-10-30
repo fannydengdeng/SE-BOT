@@ -124,6 +124,7 @@ def analyze():
             mostFreq = k
         k+=1
 
+<<<<<<< HEAD
     if mostFreq == 0:
         colour = 'Black'
     elif mostFreq == 1:
@@ -162,6 +163,36 @@ def analyze():
         colour = 'Unidentified'
     print (colour)
     return colour
+=======
+def analyze(file):
+    image = Image.open(file)
+    pix = image.load()
+    for i in (getWidth(image)):
+        for j in (getHeight(image)):
+            r, g, b = image.getPixel(i, j)
+            
+            
+            
+def newAnalyse(file)
+    image = Image.open(file)
+    #quantizes the colours
+    result = image.convert('P', palette=Image.ADAPTIVE, colors=12)
+    #reduces the image dimensions
+    result = result.resize((100,100),Image.BILINEAR)
+    result = result.convert("RGB")
+    
+    pix = result.load()
+
+    for x in range(99):
+        for y in range(99):
+            print pix[x,y]
+         
+         
+    # Based on pix, you can determine the most frequently used colour
+    # If the number of times the primary colour appears is relatively small, make the user input another image
+    
+
+>>>>>>> origin/master
 
     # pink      = makeColor(255, 175, 175)
 
