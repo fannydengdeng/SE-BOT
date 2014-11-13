@@ -9,28 +9,43 @@ import numpy as np
 def main():
 
     pygame.init()
-    win = pygame.display.set_mode((600,400), 0, 32)
+    win = pygame.display.set_mode((700,400), 0, 32)
     win.fill((255, 255, 255))
     pygame.display.set_caption('Colour Detection')
     pygame.mouse.set_visible(1)
     pygame.display.flip()
 
     uploadButton = pygame.draw.rect (win, (0,0,0), (50, 75, 225, 50), 2)
+    startButton = pygame.draw.rect (win, (0,0,0), (50, 150, 100, 50), 2)
+    stopButton = pygame.draw.rect (win, (0,0,0), (175, 150, 100, 50), 2)
+    viewButton = pygame.draw.rect (win, (0,0,0), (50, 225, 100, 50), 2)
+    messagePanel = pygame.draw.rect (win, (0,0,0), (300, 75, 350, 300), 2)
     pygame.display.update()
 
     buttonFont = pygame.font.SysFont('Calibri', 15)
     titleFont = pygame.font.SysFont('Calibri', 25)
+
     labelTitle = titleFont.render('Colour Detection Program', 1, (0,0,0))
+    win.blit(labelTitle, (225, 25))
     labelUploadButton = buttonFont.render ('Click Here to Import a Picture', 1, (0,0,0))
-    win.blit(labelTitle, (150, 25))
     b = win.blit(labelUploadButton, (75, 90))
+    labelStartButton = buttonFont.render ('Start', 1, (0,0,0))
+    win.blit(labelStartButton, (85, 165))
+    labelStopButton = buttonFont.render('Stop', 1, (0,0,0))
+    win.blit(labelStopButton, (210, 165))
     pygame.display.update()
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if b.collidepoint(event.pos):
-                    analyze()
+                    colour = analyze()
+                    if (colour == 'Unidentified'):
+                        message = 'The picture does not have a primary colour. Please try again.'
+                    else:
+                        message = 'The primary colour is '+colour+'. Click Start to run robot.'
+                    labelColourMessage = buttonFont.render((message), 1, (0,0,0))
+                    win.blit(labelColourMessage, (300, 80))
                 else:
                     pass
             else:
@@ -124,7 +139,6 @@ def analyze():
             mostFreq = k
         k+=1
 
-<<<<<<< HEAD
     if mostFreq == 0:
         colour = 'Black'
     elif mostFreq == 1:
@@ -163,37 +177,8 @@ def analyze():
         colour = 'Unidentified'
     print (colour)
     return colour
-=======
-def analyze(file):
-    image = Image.open(file)
-    pix = image.load()
-    for i in (getWidth(image)):
-        for j in (getHeight(image)):
-            r, g, b = image.getPixel(i, j)
-            
-            
-            
-def newAnalyse(file)
-    image = Image.open(file)
-    #quantizes the colours
-    result = image.convert('P', palette=Image.ADAPTIVE, colors=12)
-    #reduces the image dimensions
-    result = result.resize((100,100),Image.BILINEAR)
-    result = result.convert("RGB")
-    
-    pix = result.load()
 
-    for x in range(99):
-        for y in range(99):
-            print pix[x,y]
-         
-         
-    # Based on pix, you can determine the most frequently used colour
-    # If the number of times the primary colour appears is relatively small, make the user input another image
-    
 
->>>>>>> origin/master
 
-    # pink      = makeColor(255, 175, 175)
 
 main()
