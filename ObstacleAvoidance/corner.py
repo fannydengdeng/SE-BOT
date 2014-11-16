@@ -157,7 +157,7 @@ if not obs():
     turn_left_45()
     if not obs():
         turn_right_45()
-        backward(1, 0.25)
+        backward(1, 0.3)
         MAX_SIDE = 550
         MAX_CORNER = 500
         turn_left_45()

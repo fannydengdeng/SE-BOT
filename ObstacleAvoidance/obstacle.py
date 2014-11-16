@@ -24,7 +24,7 @@ def obs_corner():
 def check(side):
     sumLeft = 0
     count = 0
-    while count != 5:
+    while count != 12:
         sumLeft += getObstacle(side)
         count += 1
     return sumLeft/count
