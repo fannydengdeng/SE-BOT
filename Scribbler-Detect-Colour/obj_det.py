@@ -11,7 +11,7 @@ class ObjDet(Thread):
         while True:
             self.obs_found = obs()
 
-MAX_SIDE = 1375
+MAX_SIDE = 1325
 
 def obs():
         if  check(1) > MAX_SIDE:
@@ -25,6 +25,6 @@ def obs():
 
 def check(side):
         sumLeft = 0
-        for count in range(0, 10):
+        for count in range(0, 12):
             sumLeft += getObstacle(side)
         return sumLeft/count
